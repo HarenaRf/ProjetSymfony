@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TableResto index{% endblock %}
+
+{% block body %}
+    <h1>TableResto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num_table</th>
+                <th>Capacite</th>
+                <th>Etat_table</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for table_resto in table_restos %}
+            <tr>
+                <td>{{ table_resto.id }}</td>
+                <td>{{ table_resto.numTable }}</td>
+                <td>{{ table_resto.capacite }}</td>
+                <td>{{ table_resto.etatTable }}</td>
+                <td>
+                    <a href="{{ path('app_table_resto_show', {'id': table_resto.id}) }}">show</a>
+                    <a href="{{ path('app_table_resto_edit', {'id': table_resto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_table_resto_new') }}">Create new</a>
+{% endblock %}
