@@ -20,7 +20,7 @@ class TableResto
     #[ORM\Column]
     private ?int $capacite = null;
 
-    #[ORM\Column(length: 255, type: 'string', enumType: EtatTable::class)]
+    #[ORM\Column(enumType: EtatTable::class)]
     private ?EtatTable $etat_table = null;
 
     public function getId(): ?int

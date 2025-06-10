@@ -3,28 +3,31 @@
 {% block title %}Commande{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>Commande</h1>
 
-    <table class="table">
+    <table class="table table-striped">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th class="table-dark">Id</th>
                 <td>{{ commande.id }}</td>
             </tr>
             <tr>
-                <th>Date_cmd</th>
+                <th class="table-dark">Date_cmd</th>
                 <td>{{ commande.dateCmd ? commande.dateCmd|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Total</th>
+                <th class="table-dark">Total</th>
                 <td>{{ commande.total }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_commande_index') }}">back to list</a>
-
-    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">edit</a>
+    <div class="d-flex justify-content-around">
+        <a class="btn btn-secondary" href="{{ path('app_commande_index') }}">back to list</a>
+        <a class="btn btn-success" href="{{ path('app_commande_edit', {'id': commande.id}) }}">edit</a>
+    </div>
 
     {{ include('commande/_delete_form.html.twig') }}
+</div>
 {% endblock %}

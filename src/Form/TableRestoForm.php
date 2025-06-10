@@ -6,6 +6,8 @@ use App\Entity\TableResto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use App\Enum\EtatTable;
 
 class TableRestoForm extends AbstractType
 {
@@ -14,7 +16,10 @@ class TableRestoForm extends AbstractType
         $builder
             ->add('num_table')
             ->add('capacite')
-            ->add('etat_table')
+            ->add('etat_table', EnumType::class, [
+                'class'=>EtatTable::class,
+                'label'=>'Etat',
+                'choice_label'=>fn(EtatTable $choice) => ucfirst($choice->value),])
         ;
     }
 

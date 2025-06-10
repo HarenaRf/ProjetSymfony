@@ -20,7 +20,7 @@ class CommandeForm extends AbstractType
             ->add('total')
             ->add('id_table', EntityType::class, [
                 'class' => TableResto::class,
-                'choice_label' => 'id',
+                'choice_label' => 'num_table',
             ])
         ;
     }

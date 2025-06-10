@@ -21,7 +21,7 @@
                 <td>{{ table_resto.id }}</td>
                 <td>{{ table_resto.numTable }}</td>
                 <td>{{ table_resto.capacite }}</td>
-                <td>{{ table_resto.etatTable }}</td>
+                <td>{{ table_resto.etatTable.value }}</td>
                 <td>
                     <a href="{{ path('app_table_resto_show', {'id': table_resto.id}) }}">show</a>
                     <a href="{{ path('app_table_resto_edit', {'id': table_resto.id}) }}">edit</a>

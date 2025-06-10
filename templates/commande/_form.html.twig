@@ -1,4 +1,17 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="mb-3 mt-3">
+        {{ form_label(form.date_cmd, 'date commande :', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.date_cmd, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="mt-3">
+        {{ form_label(form.total, 'total :', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.total, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="mt-3">
+        {{ form_label(form.id_table, 'numero table :', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.id_table, {'attr': {'class': 'form-select'}}) }}
+    </div>
+    <div class="d-grid mt-3">
+        <button class="btn btn-block btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
 {{ form_end(form) }}
