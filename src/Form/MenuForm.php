@@ -19,7 +19,7 @@ class MenuForm extends AbstractType
             ->add('image_path')
             ->add('id_categ', EntityType::class, [
                 'class' => Categorie::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom_categ',
             ])
         ;
     }
