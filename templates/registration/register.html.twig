@@ -1,19 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_auth.html.twig' %}
 
-{% block title %}Register{% endblock %}
+
+{% block title %}Créer un compte{% endblock %}
+{% block auth_title %}Créer un compte{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
-    {{ form_errors(registrationForm) }}
-
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+    {{ form_row(registrationForm.username, {
+        label: 'Nom d’utilisateur',
+        attr: { class: 'form-control' }
+    }) }}
+
+    {{ form_row(registrationForm.roles) }}
+
+    {{ form_row(registrationForm.plainPassword, {
+        label: 'Mot de passe',
+        attr: { class: 'form-control' }
+    }) }}
+
+    <button type="submit" class="btn btn-success w-100 mt-3">Créer un compte</button>
+
     {{ form_end(registrationForm) }}
+
+    <div class="text-center mt-3">
+        <a href="{{ path('app_login') }}">J’ai déjà un compte</a>
+    </div>
 {% endblock %}

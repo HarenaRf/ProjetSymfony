@@ -11,6 +11,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class RegistrationForm extends AbstractType
 {
@@ -43,7 +45,21 @@ class RegistrationForm extends AbstractType
                     ]),
                 ],
             ])
+
+            ->add('roles', ChoiceType::class, [
+                'label' => 'Rôle',
+                'choices'  => [
+                    'Utilisateur' => 'ROLE_USER',
+                    'Administrateur' => 'ROLE_ADMIN',
+                ],
+                'multiple' => false,      // ✅ important : un seul choix
+                'expanded' => false,      // ✅ dropdown au lieu de radio
+                'attr' => ['class' => 'form-select'], // ✅ classe Bootstrap
+
+            ])
         ;
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

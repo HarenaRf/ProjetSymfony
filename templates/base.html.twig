@@ -3,18 +3,68 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-        {% block stylesheets %}
-        {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', sans-serif;
+            }
+
+            .sidebar {
+                height: 100vh;
+                width: 220px;
+                position: fixed;
+                background: linear-gradient(to bottom, #2c3e50, #34495e);
+                padding-top: 2rem;
+                color: white;
+            }
+
+            .sidebar h4 {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .sidebar a {
+                display: block;
+                padding: 12px 20px;
+                color: white;
+                text-decoration: none;
+            }
+
+            .sidebar a:hover,
+            .sidebar .active {
+                background-color: rgba(255,255,255,0.1);
+                border-left: 4px solid #ffc107;
+            }
+
+            .main-content {
+                margin-left: 220px;
+                padding: 2rem;
+                background-color: #f8f9fa;
+                min-height: 100vh;
+            }
+        </style>
+
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <!-- Sidebar -->
+        <div class="sidebar">
+            <h4>🍽️ Admin</h4>
+            <a href="{{ path('admin_dashboard') }}">Dashboard</a>
+            <a href="{{ path('menu_index') }}">Menu</a>
+            <a href="{{ path('utilisateur_index') }}">Utilisateurs</a>
+            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        </div>
 
-        <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Main content -->
+        <div class="main-content">
+            {% block body %}{% endblock %}
+        </div>
+
+        <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
