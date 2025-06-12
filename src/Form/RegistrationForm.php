@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use App\Transformer\RoleToArrayTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -45,20 +46,20 @@ class RegistrationForm extends AbstractType
                     ]),
                 ],
             ])
-
             ->add('roles', ChoiceType::class, [
-                'label' => 'Rôle',
+                'label' => 'Roles',
                 'choices'  => [
                     'Utilisateur' => 'ROLE_USER',
                     'Administrateur' => 'ROLE_ADMIN',
                 ],
-                'multiple' => false,      // ✅ important : un seul choix
                 'expanded' => false,      // ✅ dropdown au lieu de radio
+                'multiple' => false,      // ✅ important : un seul choix
                 'attr' => ['class' => 'form-select'], // ✅ classe Bootstrap
 
             ])
         ;
 
+        $builder->get('roles')->addModelTransformer(new RoleToArrayTransformer());
 
     }
 

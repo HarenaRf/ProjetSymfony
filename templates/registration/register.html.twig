@@ -12,7 +12,9 @@
         attr: { class: 'form-control' }
     }) }}
 
-    {{ form_row(registrationForm.roles) }}
+    {{ form_row(registrationForm.roles,
+        {'attr': {'multiple': false}}
+    ) }}
 
     {{ form_row(registrationForm.plainPassword, {
         label: 'Mot de passe',
